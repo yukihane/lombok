@@ -12,9 +12,21 @@
 
   <modules>
     <module>lombok-stubsstubs</module>
+    <module>lombok-stubs</module>
   </modules>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.3</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
 </project>

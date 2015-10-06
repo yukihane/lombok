@@ -14,10 +14,30 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
+  <dependencies>
+	  <dependency>
+		  <groupId>org.projectlombok</groupId>
+		  <artifactId>lombok-stubsstubs</artifactId>
+  <version>1.16.6</version>
+	  </dependency>
+  </dependencies>
+
   <build>
     <sourceDirectory>../src/stubs/</sourceDirectory>
 
-    <plugins>
+
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.3</version>
+          <configuration>
+<compilerArgs>
+	<arg>-Xbootclasspath/p:../lib/openJDK6Environment/rt-openjdk6.jar</arg>
+</compilerArgs>
+          </configuration>
+        </plugin>
+
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -31,29 +51,9 @@
             </goals>
             <configuration>
               <sources>
-                <source>../src/javac-only-stubs</source>
+                <source>../src/javac-only-stubs/</source>
               </sources>
             </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>animal-sniffer-maven-plugin</artifactId>
-        <version>1.14</version>
-        <configuration>
-          <jdk>
-            <version>[1.5.0,1.8.0)</version>
-            <vendor>oracle</vendor>
-          </jdk>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>build</goal>
-            </goals>
           </execution>
         </executions>
       </plugin>
